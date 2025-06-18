@@ -22,10 +22,7 @@ SimPlan360 is a highly interactive web-based tool designed to help users simulat
 
 | Scenario A vs B Chart Example |
 |------------------------------|
-| _[Insert Screenshot Here]_   |
-
-> _You can add a screenshot of your web app once you're ready._
-
+![alt text](<Screenshot 2025-06-19 001147.png>)
 ---
 
 ## 🛠 Tech Stack
