@@ -28,11 +28,13 @@ document.getElementById('profile-form').addEventListener('submit', function(e) {
     savingsData.push(Math.round(savings));
     yearLabels.push(Number(data.age) + i);
   }
-
+  
   document.getElementById('output').innerHTML = `
-    <h2>📈 Simulation Result</h2>
-    <p>Estimated total savings by retirement: ₹<b>${savingsData[savingsData.length - 1].toLocaleString()}</b></p>
-  `;
+  <h2>📈 Simulation Result</h2>
+  <p>Estimated total savings by retirement: ₹<b>${savingsData[savingsData.length - 1].toLocaleString()}</b></p>
+  <canvas id="savingsChart" width="100%" height="50"></canvas>
+`;
+
 
   // Render Chart
   const ctx = document.getElementById('savingsChart').getContext('2d');
