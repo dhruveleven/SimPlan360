@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SimPlan360 - Financial Scenario Planner</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SimPlan360</h1>
+      <form id="profile-form">
+        <section>
+          <h2>1. Personal Info</h2>
+          <label
+            >Age: <input type="number" name="age" min="18" max="100" required
+          /></label>
+          <label
+            >Retirement Age:
+            <input
+              type="number"
+              name="retirement_age"
+              min="40"
+              max="80"
+              required
+          /></label>
+          <label>Location: <input type="text" name="location" /></label>
+          <label
+            >Marital Status:
+            <select name="marital_status">
+              <option>Single</option>
+              <option>Married</option>
+              <option>Divorced</option>
+              <option>Widowed</option>
+            </select>
+          </label>
+        </section>
+
+        <section>
+          <h2>2. Income & Career</h2>
+          <label
+            >Current Income (₹): <input type="number" name="income"
+          /></label>
+          <label>Annual Raise (%): <input type="number" name="raise" /></label>
+          <label>Bonus (%): <input type="number" name="bonus" /></label>
+          <label
+            >Job Stability (1-5):
+            <input type="number" name="stability" min="1" max="5"
+          /></label>
+        </section>
+
+        <section>
+          <h2>3. Expenses & Liabilities</h2>
+          <label
+            >Monthly Expenses (₹): <input type="number" name="expenses"
+          /></label>
+          <label>Rent/EMI (₹): <input type="number" name="emi" /></label>
+          <label>Debt (₹): <input type="number" name="debt" /></label>
+        </section>
+
+        <section>
+          <h2>4. Goals</h2>
+          <label
+            >Retirement Goal (₹): <input type="number" name="goal_retirement"
+          /></label>
+          <label
+            >Education Goal (₹): <input type="number" name="goal_education"
+          /></label>
+          <label
+            >House Goal (₹): <input type="number" name="goal_house"
+          /></label>
+          <label
+            >Travel Budget (₹): <input type="number" name="goal_travel"
+          /></label>
+        </section>
+
+        <section>
+          <h2>5. Risk & Market</h2>
+          <label
+            >Risk Appetite (1-10):
+            <input type="number" name="risk" min="1" max="10"
+          /></label>
+          <label
+            >Market Growth Estimate (%):
+            <input type="number" name="market_growth"
+          /></label>
+          <label for="inflation">Inflation Rate (% per year):</label>
+          <input type="number" id="inflation" name="inflation" step="0.1" required><br>
+          <label
+            >Inflation Rate (%): <input type="number" name="inflation"
+          /></label>
+          <label
+            >Economic Shock Factor (0-1):
+            <input type="number" step="0.01" name="shock" min="0" max="1"
+          /></label>
+        </section>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="output">
+        <canvas id="savingsChart" width="100%" height="50"></canvas>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
