@@ -1,56 +1,78 @@
-document.getElementById('profile-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const formData = new FormData(this);
-  const data = {};
-
-  for (let [key, value] of formData.entries()) {
-    data[key] = isNaN(value) || value.trim() === "" ? value : parseFloat(value);
-  }
-
-  // Basic simulation logic
+function simulate(data) {
   const years = data.retirement_age - data.age;
-  const annualIncome = data.income;
+  let income = data.income;
   const annualExpenses = data.expenses * 12;
-  const annualSavings = annualIncome - annualExpenses;
   const raise = (data.raise || 0) / 100;
-  const growthRate = (data.market_growth || 5) / 100;
+  const marketGrowth = (data.market_growth || 5) / 100;
   const inflation = (data.inflation || 6) / 100;
+  const risk = data.risk || 5; // scale 1–10
+  const debt = data.debt || 0;
+  const shock = data.shock || 0;
 
-
-  let savings = 0;
-  const yearLabels = [];
+  let savings = -debt; // initial net worth after deducting debt
   const savingsData = [];
 
   for (let i = 0; i <= years; i++) {
-    let realGrowth = (1 + growthRate) / (1 + inflation) - 1;
+    // Adjust growth for risk and shock
+    const volatilityFactor = 1 + (risk - 5) * 0.02 - shock * 0.1;
+    const adjustedGrowth = marketGrowth * volatilityFactor;
+
+    // Real growth rate
+    const realGrowth = (1 + adjustedGrowth) / (1 + inflation) - 1;
+
+    const annualSavings = income - annualExpenses;
     savings += annualSavings * Math.pow(1 + realGrowth, i);
     savingsData.push(Math.round(savings));
-    yearLabels.push(Number(data.age) + i);
+    income *= (1 + raise);
   }
-  
-  document.getElementById('output').innerHTML = `
-  <h2>📈 Simulation Result</h2>
-  <p>Estimated total savings by retirement: ₹<b>${savingsData[savingsData.length - 1].toLocaleString()}</b></p>
-  <canvas id="savingsChart" width="100%" height="50"></canvas>
-`;
 
+  return savingsData;
+}
 
-  // Render Chart
-  const ctx = document.getElementById('savingsChart').getContext('2d');
-  if (window.savingsChartInstance) window.savingsChartInstance.destroy(); // Avoid multiple charts
-  window.savingsChartInstance = new Chart(ctx, {
+function getFormData(form) {
+  const formData = new FormData(form);
+  const data = {};
+  for (let [key, value] of formData.entries()) {
+    data[key] = parseFloat(value);
+  }
+  return data;
+}
+
+document.getElementById('compare-btn').addEventListener('click', () => {
+  const formA = document.getElementById('form-a');
+  const formB = document.getElementById('form-b');
+  const dataA = getFormData(formA);
+  const dataB = getFormData(formB);
+
+  const savingsA = simulate(dataA);
+  const savingsB = simulate(dataB);
+  const labels = Array.from({ length: dataA.retirement_age - dataA.age + 1 }, (_, i) => dataA.age + i);
+
+  const ctx = document.getElementById('comparisonChart').getContext('2d');
+  if (window.chartInstance) window.chartInstance.destroy();
+
+  window.chartInstance = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: yearLabels,
-      datasets: [{
-        label: 'Projected Savings (₹)',
-        data: savingsData,
-        fill: true,
-        backgroundColor: 'rgba(0,123,255,0.2)',
-        borderColor: '#007bff',
-        tension: 0.2,
-      }]
+      labels,
+      datasets: [
+        {
+          label: 'Scenario A',
+          data: savingsA,
+          borderColor: '#007bff',
+          backgroundColor: 'rgba(0,123,255,0.2)',
+          fill: true,
+          tension: 0.2
+        },
+        {
+          label: 'Scenario B',
+          data: savingsB,
+          borderColor: '#28a745',
+          backgroundColor: 'rgba(40,167,69,0.2)',
+          fill: true,
+          tension: 0.2
+        }
+      ]
     },
     options: {
       responsive: true,
@@ -62,4 +84,17 @@ document.getElementById('profile-form').addEventListener('submit', function(e) {
       }
     }
   });
+
+  // Show Summary
+  const finalA = savingsA[savingsA.length - 1];
+  const finalB = savingsB[savingsB.length - 1];
+  const diff = Math.abs(finalA - finalB);
+  const better = finalA > finalB ? 'Scenario A' : 'Scenario B';
+
+  document.getElementById('summary').innerHTML = `
+    <h3>💡 Summary</h3>
+    <p>Scenario A Total: ₹${finalA.toLocaleString()}</p>
+    <p>Scenario B Total: ₹${finalB.toLocaleString()}</p>
+    <p><b>${better}</b> performs better by ₹${diff.toLocaleString()}</p>
+  `;
 });

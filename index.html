@@ -1,112 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SimPlan360 - Financial Scenario Planner</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h1>SimPlan360</h1>
-      <form id="profile-form">
-        <section>
-          <h2>1. Personal Info</h2>
-          <label
-            >Age: <input type="number" name="age" min="18" max="100" required
-          /></label>
-          <label
-            >Retirement Age:
-            <input
-              type="number"
-              name="retirement_age"
-              min="40"
-              max="80"
-              required
-          /></label>
-          <label>Location: <input type="text" name="location" /></label>
-          <label
-            >Marital Status:
-            <select name="marital_status">
-              <option>Single</option>
-              <option>Married</option>
-              <option>Divorced</option>
-              <option>Widowed</option>
-            </select>
-          </label>
-        </section>
-
-        <section>
-          <h2>2. Income & Career</h2>
-          <label
-            >Current Income (₹): <input type="number" name="income"
-          /></label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SimPlan360 - Scenario Comparison</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>SimPlan360</h1>
+    <h2>Compare Two Financial Scenarios</h2>
+    <div class="form-section">
+      <!-- Scenario A -->
+      <div>
+        <h3>Scenario A</h3>
+        <form id="form-a" class="scenario-form">
+          <label>Age: <input type="number" name="age" required></label>
+          <label>Retirement Age: <input type="number" name="retirement_age" required></label>
+          <label>Income (₹): <input type="number" name="income" required></label>
+          <label>Expenses per Month (₹): <input type="number" name="expenses" required></label>
           <label>Annual Raise (%): <input type="number" name="raise" /></label>
-          <label>Bonus (%): <input type="number" name="bonus" /></label>
-          <label
-            >Job Stability (1-5):
-            <input type="number" name="stability" min="1" max="5"
-          /></label>
-        </section>
-
-        <section>
-          <h2>3. Expenses & Liabilities</h2>
-          <label
-            >Monthly Expenses (₹): <input type="number" name="expenses"
-          /></label>
-          <label>Rent/EMI (₹): <input type="number" name="emi" /></label>
+          <label>Market Growth Estimate (%): <input type="number" name="market_growth" /></label>
+          <label>Inflation Rate (%): <input type="number" name="inflation" /></label>
+          <label>Risk Tolerance (1–10): <input type="number" name="risk" min="1" max="10" /></label>
           <label>Debt (₹): <input type="number" name="debt" /></label>
-        </section>
+          <label>Economic Shock Factor (0–1): <input type="number" name="shock" min="0" max="1" step="0.01" /></label>
+        </form>
+      </div>
 
-        <section>
-          <h2>4. Goals</h2>
-          <label
-            >Retirement Goal (₹): <input type="number" name="goal_retirement"
-          /></label>
-          <label
-            >Education Goal (₹): <input type="number" name="goal_education"
-          /></label>
-          <label
-            >House Goal (₹): <input type="number" name="goal_house"
-          /></label>
-          <label
-            >Travel Budget (₹): <input type="number" name="goal_travel"
-          /></label>
-        </section>
-
-        <section>
-          <h2>5. Risk & Market</h2>
-          <label
-            >Risk Appetite (1-10):
-            <input type="number" name="risk" min="1" max="10"
-          /></label>
-          <label
-            >Market Growth Estimate (%):
-            <input type="number" name="market_growth"
-          /></label>
-          <label for="inflation">Inflation Rate (% per year):</label>
-          <input
-            type="number"
-            id="inflation"
-            name="inflation"
-            step="0.1"
-            required
-          /><br />
-          <label
-            >Economic Shock Factor (0-1):
-            <input type="number" step="0.01" name="shock" min="0" max="1"
-          /></label>
-        </section>
-
-        <button type="submit">Submit</button>
-      </form>
-
-      <div id="output">
-        <canvas id="savingsChart" width="100%" height="50"></canvas>
+      <!-- Scenario B -->
+      <div>
+        <h3>Scenario B</h3>
+        <form id="form-b" class="scenario-form">
+          <label>Age: <input type="number" name="age" required></label>
+          <label>Retirement Age: <input type="number" name="retirement_age" required></label>
+          <label>Income (₹): <input type="number" name="income" required></label>
+          <label>Expenses per Month (₹): <input type="number" name="expenses" required></label>
+          <label>Annual Raise (%): <input type="number" name="raise" /></label>
+          <label>Market Growth Estimate (%): <input type="number" name="market_growth" /></label>
+          <label>Inflation Rate (%): <input type="number" name="inflation" /></label>
+          <label>Risk Tolerance (1–10): <input type="number" name="risk" min="1" max="10" /></label>
+          <label>Debt (₹): <input type="number" name="debt" /></label>
+          <label>Economic Shock Factor (0–1): <input type="number" name="shock" min="0" max="1" step="0.01" /></label>
+        </form>
       </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <button id="compare-btn">Compare Scenarios</button>
+
+    <div id="output">
+      <canvas id="comparisonChart" height="100"></canvas>
+      <div id="summary"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
