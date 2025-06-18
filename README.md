@@ -1,68 +1,78 @@
-# 💸 SimPlan360 - Personal Financial Scenario Simulator
+# SimPlan360
 
-> An interactive, data-driven tool to simulate your long-term financial planning and visualize outcomes — built to help users explore "what if" scenarios for retirement, investments, expenses, and economic uncertainties.
+> A Smart Scenario-Based Financial Planning Simulator for Individuals
 
----
-
-## 🌟 Features So Far
-
-- 🧾 Full user profile intake form (age, income, expenses, goals, risk)
-- 📊 Real-time savings growth simulation
-- 📉 Chart.js integration for visualizing savings over years
-- 🌍 Adjustable inflation & market growth rates
-- 🔍 Detailed projections until retirement
-- 🎛 Interactive, client-side logic (no backend required)
+SimPlan360 is a highly interactive web-based tool designed to help users simulate and compare multiple long-term personal finance scenarios, accounting for variables like income, inflation, expenses, risk tolerance, debt, and market growth. The project lays the foundation for intelligent financial decision-making using future enhancements like Monte Carlo simulations and AI-based advisory.
 
 ---
 
-## 💡 Upcoming Features
+## 🚀 Features
 
-- Compare multiple user-defined financial plans
-- Simulate economic shocks (e.g. recessions, job loss, major expenses)
-- Data science projections (probability of meeting goals)
-- Machine learning enhancements (AI-based forecasts)
-- UX improvements and responsiveness
-
----
-
-## 🛠️ Tech Stack
-
-- HTML + CSS + JavaScript
-- Chart.js for financial data visualization
-- Modular architecture (easy to extend)
-- No external backend or DB needed (yet)
+- 📋 **Input-Rich Form**: Users can simulate two different financial paths by entering key variables.
+- 📈 **Dynamic Visualizations**: Uses Chart.js to plot savings growth year by year.
+- 💡 **Smart Comparison Engine**: Instantly compares two scenarios and highlights the better outcome.
+- 💼 **Business-Ready Variables**:
+  - Income, raises, and inflation
+  - Expenses, EMI, and debt
+  - Risk tolerance and economic shock factors
 
 ---
 
-## 🧪 Try It Locally
+## 📊 Demo Preview
 
-1. Clone the repo
+| Scenario A vs B Chart Example |
+|------------------------------|
+| _[Insert Screenshot Here]_   |
 
+> _You can add a screenshot of your web app once you're ready._
+
+---
+
+## 🛠 Tech Stack
+
+| Layer        | Tech Used             |
+|--------------|------------------------|
+| Frontend     | HTML, CSS, Vanilla JS |
+| Visualization| Chart.js              |
+| Backend (upcoming) | Flask (optional), Python for AI logic |
+| Data Science (planned) | Monte Carlo Simulation, Risk Modeling, ML-based Suggestions |
+
+---
+
+## 🧠 Planned Enhancements (v2 & beyond)
+
+- [ ] 🧮 Monte Carlo simulation engine (1000+ randomized runs)
+- [ ] 📊 Percentile-based charting (P10, P50, P90)
+- [ ] 🧠 AI-based recommendation engine (increase savings, delay retirement, reduce risk)
+- [ ] 📃 Natural language summary report
+- [ ] 🧑‍🤝‍🧑 User clustering & financial persona detection
+
+---
+
+## 🧑‍💻 How to Use
+
+1. Clone the repository:
    ```bash
    git clone https://github.com/dhruveleven/SimPlan360.git
    cd SimPlan360
+2. Open index.html in your browser.
 
-   ```
+3. Fill out both Scenario A and Scenario B and click Compare Scenarios.
 
-2. Open index.html in your browser
-   That’s it! No build steps required.
+4. Analyze the visual results and total savings difference.
 
-## 🙋 Who Is This For?
+📂 Project Structure
+SimPlan360/
+├── index.html        # Main UI
+├── style.css         # Styling
+├── script.js         # Simulation & comparison logic
+└── README.md         # Project documentation
 
-Final-year CS/Finance students (like me!)
+👨‍🎓 Built By
+Dhruv Patel – Final Year B.Tech CSE
+Interested in Finance, Data Science & AI
+Targeting roles at JPMC, Morgan Stanley, BCG, Bloomberg 
 
-Entry-level professionals trying to understand savings scenarios
 
-Interviewers and hiring managers at JPMC, Morgan Stanley, BCG, Bloomberg who appreciate applied problem-solving 🧠
-
-## 🤝 Contributing
-
-This project is open for contributions. Want to add a feature or idea? Create an issue or submit a pull request.
-
-📘 License
-MIT License. Free to use, modify, and learn from.
-
-## ✨ Author
-
-Dhruv Patel
-Final-Year BTech CSE | Finance x Data Science x AI
+⭐️ Give it a Star
+If this project helped or inspired you, please consider starring the repository ⭐ on GitHub!
