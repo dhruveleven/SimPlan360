@@ -21,17 +21,17 @@ SimPlan360 is a highly interactive web-based tool designed to help users simulat
 ## 📊 Demo Preview
 
 | Scenario A vs B Chart Example |
-|------------------------------|
-![alt text](<Screenshot 2025-06-19 001147.png>)
----
+| ----------------------------- |
+
+## ![alt text](<Screenshot 2025-06-19 001147.png>)
 
 ## 🛠 Tech Stack
 
-| Layer        | Tech Used             |
-|--------------|------------------------|
-| Frontend     | HTML, CSS, Vanilla JS |
-| Visualization| Chart.js              |
-| Backend (upcoming) | Flask (optional), Python for AI logic |
+| Layer                  | Tech Used                                                   |
+| ---------------------- | ----------------------------------------------------------- |
+| Frontend               | HTML, CSS, Vanilla JS                                       |
+| Visualization          | Chart.js                                                    |
+| Backend (upcoming)     | Flask (optional), Python for AI logic                       |
 | Data Science (planned) | Monte Carlo Simulation, Risk Modeling, ML-based Suggestions |
 
 ---
@@ -52,6 +52,7 @@ SimPlan360 is a highly interactive web-based tool designed to help users simulat
    ```bash
    git clone https://github.com/dhruveleven/SimPlan360.git
    cd SimPlan360
+   ```
 2. Open index.html in your browser.
 
 3. Fill out both Scenario A and Scenario B and click Compare Scenarios.
@@ -60,16 +61,15 @@ SimPlan360 is a highly interactive web-based tool designed to help users simulat
 
 📂 Project Structure
 SimPlan360/
-├── index.html        # Main UI
-├── style.css         # Styling
-├── script.js         # Simulation & comparison logic
-└── README.md         # Project documentation
+├── index.html # Main UI
+├── style.css # Styling
+├── script.js # Simulation & comparison logic
+└── README.md # Project documentation
 
 👨‍🎓 Built By
 Dhruv Patel – Final Year B.Tech CSE
 Interested in Finance, Data Science & AI
-Targeting roles at JPMC, Morgan Stanley, BCG, Bloomberg 
-
+Targeting roles at JPMC, Morgan Stanley, BCG, Bloomberg
 
 ⭐️ Give it a Star
 If this project helped or inspired you, please consider starring the repository ⭐ on GitHub!
